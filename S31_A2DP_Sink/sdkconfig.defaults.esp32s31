@@ -1,0 +1,25 @@
+# ================= ESP32-S31-N16R16V target config =================
+
+# ---- Flash: N16 = 16 MB ----
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="16MB"
+
+# ---- Memory model: run ENTIRELY on internal SRAM (no PSRAM) ----
+# Matches the old project's design: codecs lazily malloc/free small (<16 KB)
+# table blocks so only ONE codec+rate is resident at a time, and the whole
+# decode path lives in the 512 KB internal DRAM. The board's R16V PSRAM is
+# intentionally left unused so nothing depends on it.
+CONFIG_SPIRAM=n
+
+# ---- Partition table: custom 4 MB app (full codec set + growth room, 16 MB flash) ----
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# ---- A2DP sink audio output over external I2S DAC (set pins for your board) ----
+CONFIG_EXAMPLE_A2DP_SINK_OUTPUT_EXTERNAL_I2S=y
+CONFIG_EXAMPLE_I2S_BCK_PIN=2
+CONFIG_EXAMPLE_I2S_LRCK_PIN=3
+CONFIG_EXAMPLE_I2S_DATA_PIN=4
+
+# ---- Stage A: internal codec path (stack decodes SBC -> PCM -> I2S) ----
+CONFIG_EXAMPLE_A2DP_SINK_USE_EXTERNAL_CODEC=n

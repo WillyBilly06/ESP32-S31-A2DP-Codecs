@@ -1,0 +1,27 @@
+# Build outputs
+build/
+**/build/
+
+# Generated / local sdkconfig (keep sdkconfig.defaults*)
+sdkconfig
+sdkconfig.old
+**/sdkconfig
+**/sdkconfig.old
+
+# IDF component manager
+managed_components/
+**/managed_components/
+dependencies.lock
+
+# Python / tooling caches
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

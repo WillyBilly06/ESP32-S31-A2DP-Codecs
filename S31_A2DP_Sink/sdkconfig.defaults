@@ -1,0 +1,23 @@
+# Override some defaults so BT stack is enabled and
+# Classic BT is enabled and BT_DRAM_RELEASE is disabled
+CONFIG_BT_ENABLED=y
+CONFIG_BTDM_CTRL_MODE_BR_EDR_ONLY=y
+CONFIG_BT_BLUEDROID_ENABLED=y
+CONFIG_BT_CLASSIC_ENABLED=y
+CONFIG_BT_A2DP_ENABLE=y
+CONFIG_BT_BLE_ENABLED=n
+CONFIG_DAC_DMA_AUTO_16BIT_ALIGN=n
+
+# Bluetooth device name shown to phones/PCs when pairing
+CONFIG_EXAMPLE_LOCAL_DEVICE_NAME="ESP32-S31-Speaker"
+
+# Run entirely on internal SRAM — do not enable PSRAM on any target
+CONFIG_SPIRAM=n
+
+# Extended A2DP vendor codec decoders (in-stack decode, ported from v5.5.2 fork)
+CONFIG_BT_A2DP_APTX_DECODER=y
+CONFIG_BT_A2DP_LDAC_DECODER=y
+CONFIG_BT_A2DP_OPUS_DECODER=y
+CONFIG_BT_A2DP_LHDCV5_DECODER=y
+CONFIG_BT_A2DP_LC3PLUS_DECODER=y
+CONFIG_BT_A2DP_AAC_DECODER=y
